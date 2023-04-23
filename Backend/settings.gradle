@@ -1,0 +1,5 @@
+rootProject.name = 'Backend'
+include 'api'
+include 'persistence'
+include 'batch'
+
