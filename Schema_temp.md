@@ -1,35 +1,34 @@
-# Users
+
+# RDB
+## Users
 - long userId
 - string userName
 - string identifier
 - string password
 - string email
 
-
-# Products
+## Products
 - long productId
 - string productName
 - int price
 - string shopName
 
 
-# ProductOptions
+## ProductOptions
 - long productOptionId
 - string productOptionName
 - int stockQuantity
 
-
-# Shop
+## Shop
 - long shopId
 - string shopName
 
 
-# Orders
+## Orders
 - long orderId
 - long userId
 - long productId
 - long productOptionId
-
 - string productName
 - string shopName
 - int price
@@ -37,7 +36,7 @@
 - string productOptionName
 
 
-# Payments
+## Payments
 - long paymentId
 - long userId
 - long productId
@@ -45,5 +44,6 @@
 - long shopId
 
 
+# MongoDB
 
 
