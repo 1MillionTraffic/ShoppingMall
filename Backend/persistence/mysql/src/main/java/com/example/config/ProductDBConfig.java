@@ -23,17 +23,17 @@ import java.util.Objects;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "userEntityManagerFactory",
-        transactionManagerRef = "userTransactionManager",
-        basePackages = {"com.example.repository.user"}
+        entityManagerFactoryRef = "productEntityManagerFactory",
+        transactionManagerRef = "productTransactionManager",
+        basePackages = {"com.example.repository.product"}
 )
-public class UserDBConfig {
-    @Bean("userDataSource")
+public class ProductDBConfig {
+    @Bean("productDataSource")
     public DataSource userDatasource(
-            @Value("${spring.datasource.user.driver-class-name}") String driverClassName,
-            @Value("${spring.datasource.user.url}") String dataSourceUrl,
-            @Value("${spring.datasource.user.username}") String username,
-            @Value("${spring.datasource.user.password}") String password) {
+            @Value("${spring.datasource.product.driver-class-name}") String driverClassName,
+            @Value("${spring.datasource.product.url}") String dataSourceUrl,
+            @Value("${spring.datasource.product.username}") String username,
+            @Value("${spring.datasource.product.password}") String password) {
         HikariDataSource dataSource = DataSourceBuilder.create().type(HikariDataSource.class)
                 .driverClassName(driverClassName)
                 .url(dataSourceUrl)
@@ -53,21 +53,21 @@ public class UserDBConfig {
     }
 
 
-    @Bean("userEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean userEntityManagerFactory(
+    @Bean("productEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean productEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
-            @Qualifier("userDataSource") DataSource userDataSource) {
+            @Qualifier("productDataSource") DataSource productDataSource) {
         return builder
-                .dataSource(userDataSource)
-                .packages("com.example.entity.user")
-                .persistenceUnit("shops")
+                .dataSource(productDataSource)
+                .packages("com.example.entity.product")
+                .persistenceUnit("products")
                 .properties(jpaProperties())
                 .build();
     }
 
-    @Bean("userTransactionManager")
-    public JpaTransactionManager userTransactionManager(
-            @Qualifier("userEntityManagerFactory") LocalContainerEntityManagerFactoryBean userEntityManagerFactory) {
-        return new JpaTransactionManager(Objects.requireNonNull(userEntityManagerFactory.getObject()));
+    @Bean("productTransactionManager")
+    public JpaTransactionManager productTransactionManager(
+            @Qualifier("productEntityManagerFactory") LocalContainerEntityManagerFactoryBean productEntityManagerFactory) {
+        return new JpaTransactionManager(Objects.requireNonNull(productEntityManagerFactory.getObject()));
     }
 }
