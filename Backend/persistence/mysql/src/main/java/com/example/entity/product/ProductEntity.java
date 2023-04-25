@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.Instant;
 
+@Table(name="products")
 @Getter
 @Entity
 @NoArgsConstructor

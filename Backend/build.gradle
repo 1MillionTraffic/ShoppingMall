@@ -49,6 +49,7 @@ subprojects{
 }
 
 
+
 project(':api'){
     bootJar {enabled = true}
     jar {enabled = false}

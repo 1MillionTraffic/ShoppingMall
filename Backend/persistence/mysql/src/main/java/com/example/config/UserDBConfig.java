@@ -60,7 +60,7 @@ public class UserDBConfig {
         return builder
                 .dataSource(userDataSource)
                 .packages("com.example.entity.user")
-                .persistenceUnit("shops")
+                .persistenceUnit("users")
                 .properties(jpaProperties())
                 .build();
     }

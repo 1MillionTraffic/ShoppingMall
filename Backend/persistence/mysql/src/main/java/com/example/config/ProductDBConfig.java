@@ -29,7 +29,7 @@ import java.util.Objects;
 )
 public class ProductDBConfig {
     @Bean("productDataSource")
-    public DataSource userDatasource(
+    public DataSource productDatasource(
             @Value("${spring.datasource.product.driver-class-name}") String driverClassName,
             @Value("${spring.datasource.product.url}") String dataSourceUrl,
             @Value("${spring.datasource.product.username}") String username,
