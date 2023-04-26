@@ -1,30 +1,34 @@
 
 # RDB
-## Users
+## 유저 DB
+### Users
 - long userId
 - string userName
 - string identifier
 - string password
 - string email
 
-## Products
+---
+## 상품 DB
+### Products
 - long productId
 - string productName
 - int price
 - string shopName
 
 
-## ProductOptions
+### ProductOptions
 - long productOptionId
 - string productOptionName
 - int stockQuantity
 
-## Shop
+### Shop
 - long shopId
 - string shopName
 
-
-## Orders
+---
+## billing DB (샤딩 필요)
+### Orders
 - long orderId
 - long userId
 - long productId
@@ -35,17 +39,33 @@
 - int quantity;
 - string productOptionName
 
-
-## Payments
+### Payments
 - long paymentId
 - long userId
 - long productId
 - long productOptionId
 - long shopId
 
+### Coupons
+- long id
+
+### CouponsMap
+- long id
+- long userId
+- long couponId
+
+### Mileages
+---
+## 댓글/리뷰 DB
+### Review
+
+### Comment
+
+---
 
 # MongoDB
-## Carts
+## 장바구니
+### Carts
 - long userId
 - List<Long> productIds
   
