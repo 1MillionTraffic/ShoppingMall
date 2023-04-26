@@ -45,5 +45,8 @@
 
 
 # MongoDB
-
+## Carts
+- long userId
+- List<Long> productIds
+  
 
