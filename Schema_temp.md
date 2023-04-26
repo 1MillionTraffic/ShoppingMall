@@ -26,6 +26,9 @@
 - long shopId
 - string shopName
 
+### Coupons
+- long couponId
+
 ---
 ## billing DB (샤딩 필요)
 ### Orders
@@ -46,20 +49,26 @@
 - long productOptionId
 - long shopId
 
-### Coupons
-- long id
+### Mileages
+- long mileageId
 
 ### CouponsMap
-- long id
+- long couponsMapid
 - long userId
 - long couponId
 
-### Mileages
 ---
-## 댓글/리뷰 DB
-### Review
+## 리뷰 DB
+### Reviews
+- long reviewId
+- int rating
+- string description
+- long productId
+- string imageUrl
 
-### Comment
+### ReviewTags
+- long reviewTagId
+- long reviewId
 
 ---
 
@@ -68,5 +77,3 @@
 ### Carts
 - long userId
 - List<Long> productIds
-  
-
