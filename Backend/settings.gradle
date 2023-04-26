@@ -1,0 +1,6 @@
+rootProject.name = 'Backend'
+include 'api'
+include 'persistence:mongodb'
+include 'persistence:mysql'
+include 'batch'
+
