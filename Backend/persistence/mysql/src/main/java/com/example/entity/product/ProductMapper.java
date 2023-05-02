@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @NoArgsConstructor
-
 public class ProductMapper {
     public Product toDomain(ProductEntity productEntity){
         return Product.builder()
