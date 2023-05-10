@@ -2,26 +2,15 @@ package com.example.mysql.entity.product;
 
 
 import com.example.mysql.domain.product.Product;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Component
-@Getter
-@NoArgsConstructor
 
-public class ProductMapper {
-    public Product toDomain(ProductEntity productEntity) {
-        return Product.builder()
-                .productId(productEntity.getProductId())
-                .productName(productEntity.getProductName())
-                .build();
-    }
+@Mapper
+public interface ProductMapper {
+    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
-    public ProductEntity toEntity(Product product) {
-        return ProductEntity.builder()
-                .productId(product.getProductId())
-                .productName(product.getProductName())
-                .build();
-    }
+    Product toDomain(ProductEntity productEntity);
+
+    ProductEntity toEntity(Product product);
 }
