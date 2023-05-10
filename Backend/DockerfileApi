@@ -1,0 +1,11 @@
+FROM adoptopenjdk/openjdk11 AS builder
+COPY . .
+RUN chmod +x ./gradlew
+RUN ./gradlew api:clean
+RUN ./gradlew api:bootJar
+
+FROM adoptopenjdk/openjdk11
+COPY --from=builder api/build/libs/*.jar app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar","/app.jar"]

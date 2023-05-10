@@ -4,6 +4,7 @@ spring:
   profiles:
     include: mongodb, mysql
     group:
+      "docker": "mysql_docker, mongodb_docker"
       "dev": "mysql_dev, mongodb_dev"
       "prod": "mysql_prod, mongodb_prod"
     active: dev
