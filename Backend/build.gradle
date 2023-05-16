@@ -11,7 +11,7 @@ buildscript {
     }
 }
 
-subprojects{
+subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
@@ -32,6 +32,7 @@ subprojects{
 
         // db
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
         runtimeOnly 'com.mysql:mysql-connector-j'
 
         // util
@@ -49,20 +50,19 @@ subprojects{
 }
 
 
-
-project(':api'){
-    bootJar {enabled = true}
-    jar {enabled = false}
-    dependencies{
+project(':api') {
+    bootJar { enabled = true }
+    jar { enabled = false }
+    dependencies {
         implementation project(':persistence:mongodb')
         implementation project(':persistence:mysql')
     }
 }
 
-project(':batch'){
-    bootJar {enabled = true}
-    jar {enabled = false}
-    dependencies{
+project(':batch') {
+    bootJar { enabled = true }
+    jar { enabled = false }
+    dependencies {
         implementation project(':persistence:mongodb')
         implementation project(':persistence:mysql')
     }

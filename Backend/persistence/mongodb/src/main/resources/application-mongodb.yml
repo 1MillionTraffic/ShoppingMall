@@ -1,0 +1,38 @@
+spring:
+  config:
+    activate:
+      on-profile: mongodb_docker
+
+mongo:
+  cart:
+    host: mongo-cart-db
+    port: 27017
+    username: manager
+    password: 1234
+    database: cart
+---
+spring:
+  config:
+    activate:
+      on-profile: mongodb_dev
+
+mongo:
+  cart:
+    host: localhost
+    port: 27017
+    username: manager
+    password: 1234
+    database: cart
+---
+spring:
+  config:
+    activate:
+      on-profile: mongodb_prod
+
+mongo:
+  cart:
+    host: localhost
+    port: 27017
+    username: manager
+    password: 1234
+    database: cart
