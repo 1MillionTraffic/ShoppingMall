@@ -1,5 +1,4 @@
-package com.example.entity.order;
-
+package com.example.entity.billing.payment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,35 +8,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Table(name="orders")
+@Table(name="payments")
 @Getter
 @Entity
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class OrderEntity {
+public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="order_id")
-    private Long orderId;
+    @Column(name="payment_id")
+    private Long paymentId;
 
     @Column(name="user_id")
     private Long userId;
-    @Column(name="product_id")
-    private Long productId;
-    @Column(name="product_option_id")
-    private Long productOptionId;
-
-    @Column(name="product_name")
-    private String productName;
-    @Column(name="shop_name")
-    private String shopName;
-    @Column(name="price")
-    private Integer price;
-    @Column(name="quantity")
-    private Integer quantity;
-    @Column(name="product_option_name")
-    private String productOptionName;
+    @Column(name="shop_id")
+    private Long shopId;
+    @Column(name="money")
+    private Integer money;
 
     @Column(name="created_dt")
     private Instant createdDt;

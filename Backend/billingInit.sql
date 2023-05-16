@@ -12,5 +12,29 @@ CREATE TABLE `orders` (
 
   `created_dt` timestamp   not null default current_timestamp,
   `updated_dt` timestamp   not null default current_timestamp on update current_timestamp,
-  PRIMARY KEY (`product_id`)
+  PRIMARY KEY (`order_id`)
+);
+
+
+CREATE TABLE `payments` (
+  `payment_id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL,
+  `shop_id` bigint NOT NULL,
+  `money` int NOT NULL,
+
+  `created_dt` timestamp   not null default current_timestamp,
+  `updated_dt` timestamp   not null default current_timestamp on update current_timestamp,
+  PRIMARY KEY (`payment_id`)
+);
+
+
+CREATE TABLE `mileages` (
+  `mileage_id` bigint NOT NULL AUTO_INCREMENT,
+  `order_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  `mileage` int NOT NULL,
+
+  `created_dt` timestamp   not null default current_timestamp,
+  `updated_dt` timestamp   not null default current_timestamp on update current_timestamp,
+  PRIMARY KEY (`mileage_id`)
 );

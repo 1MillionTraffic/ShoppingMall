@@ -1,17 +1,17 @@
 version: '3'
 services:
-  api-server:
-    container_name: api-server
-    restart: always
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8080"
-    depends_on:
-      - user-mysql
-      - product-mysql
-      - billing-mysql
+#  api-server:
+#    container_name: api-server
+#    restart: always
+#    build:
+#      context: ./api
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8081:8080"
+#    depends_on:
+#      - user-mysql
+#      - product-mysql
+#      - billing-mysql
 
   user-mysql:
     container_name: "user-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
@@ -27,7 +27,7 @@ services:
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
-      -
+
   product-mysql:
     container_name: "product-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
     image: mysql:8.0
@@ -57,3 +57,18 @@ services:
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
+
+  elastic-search:
+    container_name: "elastic-search"
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+    ports:
+      - 9200:9200
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1

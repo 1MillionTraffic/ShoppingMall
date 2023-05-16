@@ -1,4 +1,4 @@
-package com.example.domain.order;
+package com.example.domain.billing.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

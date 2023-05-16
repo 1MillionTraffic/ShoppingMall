@@ -6,12 +6,17 @@ spring:
     # mysql
     user:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13307/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      url: jdbc:mysql://localhost:13306/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
       username: root
       password: 1234
     product:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      url: jdbc:mysql://localhost:13307/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      username: root
+      password: 1234
+    billing:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13308/billingDB # url: jdbc:mysql://product-mysql:3306/billingDB
       username: root
       password: 1234
 
