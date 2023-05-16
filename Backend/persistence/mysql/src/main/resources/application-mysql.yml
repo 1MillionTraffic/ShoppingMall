@@ -1,0 +1,52 @@
+spring:
+  config:
+    activate:
+      on-profile: mysql_docker
+
+  datasource:
+    user:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://user-mysql:3306/userDB
+      username: root
+      password: 1234
+    product:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://product-mysql:3306/productDB
+      username: root
+      password: 1234
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql_dev
+
+  datasource:
+    user:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13307/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      username: root
+      password: 1234
+    product:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      username: root
+      password: 1234
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql_prod
+
+  datasource:
+    user:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13307/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      username: root
+      password: 1234
+    product:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      username: root
+      password: 1234
