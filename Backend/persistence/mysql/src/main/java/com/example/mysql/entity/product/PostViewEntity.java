@@ -29,6 +29,8 @@ public class PostViewEntity {
     private Long postViewId;
 
     @Column(nullable = false)
+    private Long postId;
+    @Column(nullable = false)
     private Long viewCount;
 
     @CreationTimestamp
