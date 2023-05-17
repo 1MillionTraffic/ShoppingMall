@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.mysql.domain.product.Product;
-import com.example.mysql.repository.product.ProductReader;
-import com.example.mysql.repository.product.ProductWriter;
+import com.example.mysql.repository.product.reader.ProductReader;
+import com.example.mysql.repository.product.writer.ProductWriter;
 import com.example.request.product.CreateProductRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

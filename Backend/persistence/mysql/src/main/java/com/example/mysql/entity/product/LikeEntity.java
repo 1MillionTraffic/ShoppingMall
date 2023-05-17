@@ -16,22 +16,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Table(name = "product_photo_map")
+@Table(name = "`like`")
 @Entity
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductPhotoMapEntity {
+public class LikeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productPhotoMapId;
+    private Long likeId;
 
+    @Column(nullable = false)
+    private Long userId;
     @Column(nullable = false)
     private Long productId;
     @Column(nullable = false)
-    private Long photoId;
+    private boolean activation;
 
     @CreationTimestamp
     private Instant createdDt;

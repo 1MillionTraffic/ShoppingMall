@@ -1,8 +1,9 @@
-package com.example.mysql.repository.product;
+package com.example.mysql.repository.product.reader;
 
 import com.example.mysql.domain.product.Product;
 import com.example.mysql.entity.product.ProductEntity;
-import com.example.mysql.entity.product.ProductMapper;
+import com.example.mysql.mapper.product.ProductMapper;
+import com.example.mysql.repository.product.jpa.ProductEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

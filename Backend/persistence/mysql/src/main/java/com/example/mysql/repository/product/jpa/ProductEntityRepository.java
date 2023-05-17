@@ -1,4 +1,4 @@
-package com.example.mysql.repository.product;
+package com.example.mysql.repository.product.jpa;
 
 import com.example.mysql.entity.product.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

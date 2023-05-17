@@ -16,24 +16,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Table(name = "like_map")
+@Table(name = "review")
 @Entity
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LikeMapEntity {
+public class ReviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long likeMapId;
+    private Long reviewId;
 
     @Column(nullable = false)
     private Long userId;
     @Column(nullable = false)
     private Long productId;
+    private Long photoId;
+
     @Column(nullable = false)
-    private boolean activation;
+    private Integer rate;
+    @Column(nullable = false)
+    private String comment;
 
     @CreationTimestamp
     private Instant createdDt;

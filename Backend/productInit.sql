@@ -5,6 +5,7 @@ CREATE TABLE products
     thumbnail_photo_id BIGINT       NOT NULL,
     category_id        BIGINT       NOT NULL,
     sub_category_id    BIGINT,
+    sale_id            BIGINT,
     serial_number      VARCHAR(256) NOT NULL,
     product_state      VARCHAR(256) NOT NULL,
     product_name       VARCHAR(256) NOT NULL,
@@ -18,14 +19,14 @@ CREATE TABLE products
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
 
-CREATE TABLE like_map
+CREATE TABLE `like`
 (
-    like_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id     BIGINT     NOT NULL,
-    product_id  BIGINT     NOT NULL,
-    activation  TINYINT(1) NOT NULL,
-    created_dt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_dt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    like_id    BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT     NOT NULL,
+    product_id BIGINT     NOT NULL,
+    activation TINYINT(1) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
@@ -48,6 +49,7 @@ CREATE TABLE photos
 (
     photo_id       BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id        BIGINT       NOT NULL,
+    ref_id         BIGINT       NOT NULL,
     encoded_name   VARCHAR(256) NOT NULL,
     original_name  VARCHAR(256) NOT NULL,
     path           VARCHAR(256) NOT NULL,
@@ -84,18 +86,7 @@ CREATE TABLE post_views
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
 
-CREATE TABLE product_photo_map
-(
-    product_photo_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    product_id           BIGINT NOT NULL,
-    photo_id             BIGINT NOT NULL,
-    created_dt           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_dt           TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE = InnoDB
-  DEFAULT CHARACTER SET = 'utf8mb4'
-  DEFAULT COLLATE = 'utf8mb4_general_ci';
-
-CREATE TABLE review_map
+CREATE TABLE review
 (
     review_id  BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id    BIGINT       NOT NULL,
@@ -137,6 +128,17 @@ CREATE TABLE tag_map
     tag_id     BIGINT NOT NULL,
     created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE sales
+(
+    sale_id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    discount_percent BIGINT,
+    discount_amount  BIGINT,
+    created_dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';

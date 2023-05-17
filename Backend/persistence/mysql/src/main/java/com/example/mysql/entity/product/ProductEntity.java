@@ -43,6 +43,7 @@ public class ProductEntity {
     private Long productId;
     @Column(nullable = false)
     private Long shopId;
+    private Long saleId;
 
     @Column(nullable = false)
     private Long thumbnailPhotoId; // 대표 이미지

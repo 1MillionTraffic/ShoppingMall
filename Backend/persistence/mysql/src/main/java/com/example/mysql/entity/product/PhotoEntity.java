@@ -31,6 +31,7 @@ public class PhotoEntity {
 
     @Column(nullable = false)
     private Long userId;
+    private Long refId;
 
     @Column(nullable = false)
     private String encodedName;

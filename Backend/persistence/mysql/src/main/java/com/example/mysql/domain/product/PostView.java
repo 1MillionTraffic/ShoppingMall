@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
-    private Long productId;
-    private String productName;
+public class PostView {
+    private Long postViewId;
 }

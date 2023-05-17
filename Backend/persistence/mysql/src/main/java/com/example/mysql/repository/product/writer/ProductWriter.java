@@ -1,4 +1,4 @@
-package com.example.mysql.repository.product;
+package com.example.mysql.repository.product.writer;
 
 import com.example.mysql.domain.product.Product;
 
