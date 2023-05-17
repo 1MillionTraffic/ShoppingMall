@@ -1,21 +1,142 @@
-CREATE TABLE `products`
+CREATE TABLE products
 (
-    `product_id`      bigint        NOT NULL AUTO_INCREMENT,
-    `shop_id`         bigint        NOT NULL,
-    `category_id`     bigint        NOT NULL,
-    `sub_category_id` bigint        NULL,
+    product_id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    shop_id            BIGINT       NOT NULL,
+    thumbnail_photo_id BIGINT       NOT NULL,
+    category_id        BIGINT       NOT NULL,
+    sub_category_id    BIGINT,
+    serial_number      VARCHAR(256) NOT NULL,
+    product_state      VARCHAR(256) NOT NULL,
+    product_name       VARCHAR(256) NOT NULL,
+    product_desc       VARCHAR(256) NOT NULL,
+    gender             VARCHAR(256) NOT NULL,
+    price              BIGINT       NOT NULL DEFAULT 0,
+    register_dt        TIMESTAMP,
+    created_dt         TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
+    updated_dt         TIMESTAMP             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
 
-    `product_state`   char(255)     NOT NULL default 'REGISTERED',
-    `product_name`    varchar(255)  NOT NULL,
-    `product_desc`    varchar(1024) NOT NULL,
-    `serial_number`   char(255)     NOT NULL,
-    `gender`          char(255)     NOT NULL default 'MALE',
-    `price`           bigint        NOT NULL default 0,
-    `reservation_dt`  timestamp     NULL,
+CREATE TABLE like_map
+(
+    like_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id     BIGINT     NOT NULL,
+    product_id  BIGINT     NOT NULL,
+    activation  TINYINT(1) NOT NULL,
+    created_dt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
 
-    `created_dt`      timestamp     NOT NULL default current_timestamp,
-    `updated_dt`      timestamp     NOT NULL default current_timestamp on update current_timestamp,
-    PRIMARY KEY (`product_id`)
+CREATE TABLE options
+(
+    option_id        BIGINT AUTO_INCREMENT PRIMARY KEY,
+    parent_option_id BIGINT       NOT NULL,
+    has_child_option TINYINT(1)   NOT NULL,
+    quantity         INTEGER,
+    title            VARCHAR(256) NOT NULL,
+    price_offset     BIGINT       NOT NULL DEFAULT 0,
+    created_dt       TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
+    updated_dt       TIMESTAMP             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE photos
+(
+    photo_id       BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id        BIGINT       NOT NULL,
+    encoded_name   VARCHAR(256) NOT NULL,
+    original_name  VARCHAR(256) NOT NULL,
+    path           VARCHAR(256) NOT NULL,
+    file_extension VARCHAR(256) NOT NULL,
+    created_dt     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt     TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE posts
+(
+    post_id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_id         BIGINT       NOT NULL,
+    thumbnail_photo_id BIGINT       NOT NULL,
+    user_id            BIGINT       NOT NULL,
+    title              VARCHAR(256) NOT NULL,
+    content            VARCHAR(256) NOT NULL,
+    post_type          VARCHAR(256) NOT NULL,
+    post_state         VARCHAR(256) NOT NULL,
+    created_dt         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE post_views
+(
+    post_view_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    view_count   BIGINT NOT NULL,
+    created_dt   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt   TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE product_photo_map
+(
+    product_photo_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_id           BIGINT NOT NULL,
+    photo_id             BIGINT NOT NULL,
+    created_dt           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt           TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE review_map
+(
+    review_id  BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT       NOT NULL,
+    product_id BIGINT       NOT NULL,
+    photo_id   BIGINT,
+    rate       INTEGER      NOT NULL,
+    comment    VARCHAR(256) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE shops
+(
+    shop_id    BIGINT AUTO_INCREMENT PRIMARY KEY,
+    shop_name  VARCHAR(256) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE tags
+(
+    tag_id     BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tag_type   VARCHAR(256) NOT NULL,
+    content    VARCHAR(256) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE tag_map
+(
+    tag_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    ref_id     BIGINT NOT NULL,
+    tag_id     BIGINT NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
