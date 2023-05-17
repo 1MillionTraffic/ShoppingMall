@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class ProductReaderImpl implements ProductReader {
     private final ProductEntityRepository productEntityRepository;
-    private final ProductMapper productMapper;
+    private final ProductMapper productMapper = ProductMapper.INSTANCE;
 
     @Override
     public Product findByProductId(Long productId) {

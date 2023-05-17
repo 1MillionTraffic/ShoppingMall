@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class ProductWriterImpl implements ProductWriter {
     private final ProductEntityRepository productEntityRepository;
-    private final ProductMapper productMapper;
+    private final ProductMapper productMapper = ProductMapper.INSTANCE;
 
     public Product create(Product product) {
         return productMapper.toDomain(productEntityRepository.save(productMapper.toEntity(product)));
