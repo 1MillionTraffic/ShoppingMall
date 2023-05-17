@@ -49,13 +49,23 @@ CREATE TABLE photos
 (
     photo_id       BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id        BIGINT       NOT NULL,
-    ref_id         BIGINT       NOT NULL,
     encoded_name   VARCHAR(256) NOT NULL,
     original_name  VARCHAR(256) NOT NULL,
     path           VARCHAR(256) NOT NULL,
     file_extension VARCHAR(256) NOT NULL,
     created_dt     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_dt     TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE photo_map
+(
+    photo_map_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    ref_id       BIGINT NOT NULL,
+    photo_id     BIGINT NOT NULL,
+    created_dt   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt   TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
@@ -139,6 +149,18 @@ CREATE TABLE sales
     discount_amount  BIGINT,
     created_dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE categories
+(
+    category_id        BIGINT AUTO_INCREMENT PRIMARY KEY,
+    parent_category_id BIGINT,
+    has_child_category TINYINT(1)   NOT NULL,
+    content            VARCHAR(256) NOT NULL,
+    created_dt         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = 'utf8mb4'
   DEFAULT COLLATE = 'utf8mb4_general_ci';
