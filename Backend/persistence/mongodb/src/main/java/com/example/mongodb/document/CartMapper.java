@@ -1,4 +1,4 @@
-package com.example.mongodb.entity;
+package com.example.mongodb.document;
 
 import com.example.mongodb.domain.Cart;
 import org.mapstruct.Mapper;
@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 public interface CartMapper {
     CartMapper INSTANCE = Mappers.getMapper(CartMapper.class);
 
-    Cart toDomain(CartEntity cartEntity);
+    Cart toDomain(CartDocument cartDocument);
 
-    CartEntity toEntity(Cart cart);
+    CartDocument toEntity(Cart cart);
 }

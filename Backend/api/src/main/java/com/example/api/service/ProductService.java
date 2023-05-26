@@ -1,9 +1,9 @@
-package com.example.service;
+package com.example.api.service;
 
+import com.example.api.request.product.CreateProductRequest;
 import com.example.mysql.domain.product.Product;
 import com.example.mysql.repository.product.reader.ProductReader;
 import com.example.mysql.repository.product.writer.ProductWriter;
-import com.example.request.product.CreateProductRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

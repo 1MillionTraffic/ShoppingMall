@@ -1,4 +1,4 @@
-package com.example.mongodb.entity;
+package com.example.mongodb.document;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Document(collection = "cart")
-public class CartEntity {
+public class CartDocument {
     @MongoId
     private String id;
     private Long userId;

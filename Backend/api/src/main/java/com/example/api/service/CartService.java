@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.api.service;
 
 import com.example.mongodb.repository.CartReader;
 import com.example.mongodb.repository.CartWriter;

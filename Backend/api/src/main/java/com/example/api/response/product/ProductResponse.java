@@ -1,4 +1,4 @@
-package com.example.request.product;
+package com.example.api.response.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class CreateProductRequest {
+public class ProductResponse {
+    private Long productId;
     private String productName;
+
 }

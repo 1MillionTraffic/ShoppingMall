@@ -1,6 +1,6 @@
-package com.example.controller;
+package com.example.api.controller;
 
-import com.example.service.CartService;
+import com.example.api.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
