@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.domain.billing.order.Order;
-import com.example.repository.billing.order.OrderReader;
-import com.example.repository.billing.order.OrderWriter;
+import com.example.mysql.repository.billing.order.OrderReader;
+import com.example.mysql.repository.billing.order.OrderWriter;
 import com.example.request.order.CreateOrderRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

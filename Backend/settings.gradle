@@ -4,4 +4,5 @@ include 'persistence:mongodb'
 include 'persistence:mysql'
 include 'batch'
 include 'persistence:elastic-search'
+include 'domain'
 

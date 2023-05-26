@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.domain.billing.payment.Payment;
-import com.example.repository.billing.payment.PaymentReader;
-import com.example.repository.billing.payment.PaymentWriter;
+import com.example.mysql.repository.billing.payment.PaymentReader;
+import com.example.mysql.repository.billing.payment.PaymentWriter;
 import com.example.request.payment.CreatePaymentRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

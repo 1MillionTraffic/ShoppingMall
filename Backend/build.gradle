@@ -54,10 +54,37 @@ subprojects {
     }
 }
 
+
+project(':persistence:mysql'){
+    bootJar { enabled = true }
+    jar { enabled = false }
+    dependencies {
+        implementation project(':domain')
+    }
+}
+
+project(':persistence:mongodb'){
+    bootJar { enabled = true }
+    jar { enabled = false }
+    dependencies {
+        implementation project(':domain')
+    }
+}
+
+project(':persistence:elastic-search'){
+    bootJar { enabled = true }
+    jar { enabled = false }
+    dependencies {
+        implementation project(':domain')
+    }
+}
+
+
 project(':api') {
     bootJar { enabled = true }
     jar { enabled = false }
     dependencies {
+        implementation project(':domain')
         implementation project(':persistence:elastic-search')
         implementation project(':persistence:mongodb')
         implementation project(':persistence:mysql')

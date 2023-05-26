@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.mysql.config;
 
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -25,7 +25,7 @@ import java.util.Objects;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "billingEntityManagerFactory",
         transactionManagerRef = "billingTransactionManager",
-        basePackages = {"com.example.repository.billing"}
+        basePackages = {"com.example.mysql.repository.billing"}
 )
 public class BillingDBConfig {
     @Bean("billingDataSource")
