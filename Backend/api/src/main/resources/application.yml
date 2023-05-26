@@ -2,11 +2,11 @@ spring:
   application:
     name: shopping-mall
   profiles:
-    include: mongodb, mysql
+    include: mongodb, mysql, oauth
     group:
       "docker": "mysql_docker, mongodb_docker"
-      "dev": "mysql_dev, mongodb_dev"
-      "prod": "mysql_prod, mongodb_prod"
+      "dev": "mysql_dev, mongodb_dev, oauth_dev"
+      "prod": "mysql_prod, mongodb_prod, oauth_prod"
     active: dev
   lifecycle:
     timeout-per-shutdown-phase: 1m
