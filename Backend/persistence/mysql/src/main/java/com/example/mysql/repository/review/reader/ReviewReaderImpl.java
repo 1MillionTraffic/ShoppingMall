@@ -1,6 +1,6 @@
 package com.example.mysql.repository.review.reader;
 
-import com.example.mysql.domain.review.Review;
+import com.example.domain.review.Review;
 import com.example.mysql.entity.review.ReviewEntity;
 import com.example.mysql.mapper.review.ReviewMapper;
 import com.example.mysql.repository.review.jpa.ReviewEntityRepository;

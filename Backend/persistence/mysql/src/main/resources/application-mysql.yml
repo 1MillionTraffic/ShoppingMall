@@ -24,6 +24,11 @@ spring:
       url: jdbc:mysql://photo-mysql:3306/photoDB
       username: root
       password: 1234
+    billing:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://billing-mysql:3306/billingDB
+      username: root
+      password: 1234
 
 ---
 spring:
@@ -34,12 +39,12 @@ spring:
   datasource:
     user:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13307/userDB
+      url: jdbc:mysql://localhost:13306/userDB
       username: root
       password: 1234
     product:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13306/productDB
+      url: jdbc:mysql://localhost:13307/productDB
       username: root
       password: 1234
     review:
@@ -50,6 +55,11 @@ spring:
     photo:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:13309/photoDB
+      username: root
+      password: 1234
+    billing:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13310/billingDB
       username: root
       password: 1234
 
@@ -62,12 +72,12 @@ spring:
   datasource:
     user:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13307/userDB
+      url: jdbc:mysql://localhost:13306/userDB
       username: root
       password: 1234
     product:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13306/productDB
+      url: jdbc:mysql://localhost:13307/productDB
       username: root
       password: 1234
     review:
@@ -78,5 +88,10 @@ spring:
     photo:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:13309/photoDB
+      username: root
+      password: 1234
+    billing:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13310/billingDB
       username: root
       password: 1234

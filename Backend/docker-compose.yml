@@ -86,7 +86,7 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: billingDB
     volumes:
-      - ./billingInit.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-sql/billing/:/docker-entrypoint-initdb.d/
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci

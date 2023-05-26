@@ -1,6 +1,6 @@
 package com.example.mysql.repository.review.writer;
 
-import com.example.mysql.domain.review.Review;
+import com.example.domain.review.Review;
 import com.example.mysql.mapper.review.ReviewMapper;
 import com.example.mysql.repository.review.jpa.ReviewEntityRepository;
 import lombok.RequiredArgsConstructor;

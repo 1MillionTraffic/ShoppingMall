@@ -1,4 +1,4 @@
-package com.example.mysql.domain.photo;
+package com.example.domain.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Photo {
-    private Long photoId;
+public class Post {
+    private Long postId;
 }

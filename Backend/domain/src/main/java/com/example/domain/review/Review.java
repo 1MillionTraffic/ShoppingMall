@@ -1,4 +1,4 @@
-package com.example.mysql.domain.review;
+package com.example.domain.review;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

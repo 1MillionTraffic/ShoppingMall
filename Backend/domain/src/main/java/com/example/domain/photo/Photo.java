@@ -1,4 +1,4 @@
-package com.example.domain.product;
+package com.example.domain.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Option {
-    private Long optionId;
+public class Photo {
+    private Long photoId;
 }

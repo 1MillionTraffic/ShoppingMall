@@ -1,4 +1,4 @@
-package com.example.request.order;
+package com.example.api.request.order;
 
 import com.example.domain.billing.order.Order;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class CreateOrderRequest {
     private Integer quantity;
     private String productOptionName;
 
-    public Order toDomain(){
+    public Order toDomain() {
         return Order.builder()
                 .userId(userId)
                 .productId(productId)

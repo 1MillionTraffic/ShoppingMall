@@ -1,7 +1,7 @@
 package com.example.mysql.mapper.review;
 
 
-import com.example.mysql.domain.review.Like;
+import com.example.domain.review.Like;
 import com.example.mysql.entity.review.LikeEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

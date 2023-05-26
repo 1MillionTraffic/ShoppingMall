@@ -1,4 +1,4 @@
-package com.example.response.order;
+package com.example.api.response.order;
 
 
 import com.example.domain.billing.order.Order;
@@ -18,7 +18,7 @@ public class OrderResponse {
     private Instant createdDt;
     private Instant updatedDt;
 
-    public static OrderResponse of(Order order){
+    public static OrderResponse of(Order order) {
         return OrderResponse.builder()
                 .orderId(order.getOrderId())
                 .createdDt(order.getCreatedDt())

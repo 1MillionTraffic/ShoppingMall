@@ -1,17 +1,16 @@
 package com.example.api.service;
 
+import com.example.api.request.product.CreateProductRequest;
 import com.example.domain.product.Product;
 import com.example.elastic.repository.product.ProductElasticSearchReader;
 import com.example.elastic.repository.product.ProductElasticSearchWriter;
-import com.example.mysql.repository.product.ProductReader;
-import com.example.mysql.repository.product.ProductWriter;
-import com.example.request.product.CreateProductRequest;
+import com.example.mysql.repository.product.reader.ProductReader;
+import com.example.mysql.repository.product.writer.ProductWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -36,11 +35,11 @@ public class ProductService {
         return productReader.findByProductId(productId);
     }
 
-    public void esInsert(){
+    public void esInsert() {
         productElasticSearchWriter.bulkIndex(productReader.findAll());
     }
 
-    public List<Product> findQuery(String query){
+    public List<Product> findQuery(String query) {
         return productElasticSearchReader.search(query);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.mysql.mapper.product;
 
 
-import com.example.mysql.domain.product.Category;
+import com.example.domain.product.Category;
 import com.example.mysql.entity.product.CategoryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

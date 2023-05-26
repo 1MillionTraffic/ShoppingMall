@@ -1,9 +1,9 @@
-package com.example.service;
+package com.example.api.service;
 
+import com.example.api.request.order.CreateOrderRequest;
 import com.example.domain.billing.order.Order;
 import com.example.mysql.repository.billing.order.OrderReader;
 import com.example.mysql.repository.billing.order.OrderWriter;
-import com.example.request.order.CreateOrderRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,12 +15,12 @@ public class OrderService {
     private final OrderReader orderReader;
 
     @Transactional(value = "billingTransactionManager")
-    public Order createOrder(CreateOrderRequest request){
+    public Order createOrder(CreateOrderRequest request) {
         return orderWriter.create(request.toDomain());
     }
 
     @Transactional(value = "billingTransactionManager")
-    public Order findByOrderId(Long orderId){
+    public Order findByOrderId(Long orderId) {
         return orderReader.findByOrderId(orderId);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.request.payment;
+package com.example.api.request.payment;
 
 import com.example.domain.billing.payment.Payment;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class CreatePaymentRequest {
     private Long shopId;
     private Integer money;
 
-    public Payment toDomain(){
+    public Payment toDomain() {
         return Payment.builder()
                 .userId(userId)
                 .shopId(shopId)

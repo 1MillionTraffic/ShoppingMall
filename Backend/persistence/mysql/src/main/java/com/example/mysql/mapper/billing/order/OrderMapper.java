@@ -1,6 +1,7 @@
-package com.example.mysql.entity.billing.order;
+package com.example.mysql.mapper.billing.order;
 
 import com.example.domain.billing.order.Order;
+import com.example.mysql.entity.billing.order.OrderEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,6 +10,8 @@ import org.mapstruct.factory.Mappers;
 
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
+
     Order toDomain(OrderEntity orderEntity);
+
     OrderEntity toEntity(Order order);
 }

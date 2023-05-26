@@ -1,6 +1,6 @@
 package com.example.mysql.repository.photo.writer;
 
-import com.example.mysql.domain.photo.Photo;
+import com.example.domain.photo.Photo;
 import com.example.mysql.mapper.photo.PhotoMapper;
 import com.example.mysql.repository.photo.jpa.PhotoEntityRepository;
 import lombok.RequiredArgsConstructor;

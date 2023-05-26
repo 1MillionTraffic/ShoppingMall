@@ -1,7 +1,7 @@
 package com.example.mysql.mapper.product;
 
 
-import com.example.mysql.domain.product.Option;
+import com.example.domain.product.Option;
 import com.example.mysql.entity.product.OptionEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
