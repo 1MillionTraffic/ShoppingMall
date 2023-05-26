@@ -1,4 +1,4 @@
-package com.example.mysql.domain.product;
+package com.example.domain.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

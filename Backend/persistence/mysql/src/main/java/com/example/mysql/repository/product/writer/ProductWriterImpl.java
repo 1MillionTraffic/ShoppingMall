@@ -3,6 +3,8 @@ package com.example.mysql.repository.product.writer;
 import com.example.mysql.domain.product.Product;
 import com.example.mysql.mapper.product.ProductMapper;
 import com.example.mysql.repository.product.jpa.ProductEntityRepository;
+import com.example.domain.product.Product;
+import com.example.mysql.entity.product.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,4 @@ public class ProductWriterImpl implements ProductWriter {
     public Product create(Product product) {
         return productMapper.toDomain(productEntityRepository.save(productMapper.toEntity(product)));
     }
-
 }
