@@ -1,4 +1,4 @@
-package com.example.mysql.domain.product;
+package com.example.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class Product {
-    private Long productId;
-    private String productName;
+public class User {
+    private Long userId;
+    private String userName;
 }

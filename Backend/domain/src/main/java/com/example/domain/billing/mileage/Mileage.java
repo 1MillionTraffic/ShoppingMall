@@ -1,4 +1,4 @@
-package com.example.mysql.domain.user;
+package com.example.domain.billing.mileage;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class User {
+public class Mileage {
+    private Long mileageId;
     private Long userId;
-    private String userName;
+    private Long orderId;
+    private Integer mileage;
 }
