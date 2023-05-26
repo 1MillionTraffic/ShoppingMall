@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: shopping-mall
+  profiles:
+    include: mongodb, mysql, oauth
+    group:
+      "dev": "mysql_dev, mongodb_dev, oauth_dev"
+      "prod": "mysql_prod, mongodb_prod, oauth_prod"
+    active: dev
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+  main:
+    allow-circular-references: true # self injection(aop proxy)을 위해 사용
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: NON_NULL
+
+server:
+  port: 8081
+  shutdown: graceful
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace
