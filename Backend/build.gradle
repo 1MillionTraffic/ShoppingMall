@@ -16,9 +16,6 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-
-    group 'org.example'
-    version '1.0-SNAPSHOT'
     sourceCompatibility = '11'
 
     repositories {
@@ -46,24 +43,5 @@ subprojects {
 
     test {
         useJUnitPlatform()
-    }
-}
-
-
-project(':api') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-    dependencies {
-        implementation project(':persistence:mongodb')
-        implementation project(':persistence:mysql')
-    }
-}
-
-project(':batch') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-    dependencies {
-        implementation project(':persistence:mongodb')
-        implementation project(':persistence:mysql')
     }
 }
