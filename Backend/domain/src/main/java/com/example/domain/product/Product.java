@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Product {
     private Long productId;

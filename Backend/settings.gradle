@@ -1,8 +1,9 @@
 rootProject.name = 'Backend'
 include 'api'
+include 'admin'
+include 'batch'
+include 'domain'
 include 'persistence:mongodb'
 include 'persistence:mysql'
-include 'batch'
 include 'persistence:elastic-search'
-include 'domain'
 

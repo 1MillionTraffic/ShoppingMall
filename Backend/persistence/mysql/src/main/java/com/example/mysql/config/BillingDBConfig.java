@@ -41,6 +41,7 @@ public class BillingDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("billing-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }
@@ -58,7 +59,7 @@ public class BillingDBConfig {
             @Qualifier("billingDataSource") DataSource billingDataSource) {
         return builder
                 .dataSource(billingDataSource)
-                .packages("com.example.entity.billing")
+                .packages("com.example.mysql.entity.billing")
                 .persistenceUnit("billing")
                 .properties(jpaProperties())
                 .build();

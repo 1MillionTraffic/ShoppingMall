@@ -1,0 +1,26 @@
+CREATE TABLE reviews
+(
+    review_id  BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT       NOT NULL,
+    post_id    BIGINT       NOT NULL,
+    photo_id   BIGINT       NOT NULL,
+    photo_url  VARCHAR(256) NULL,
+    rate       INTEGER      NOT NULL,
+    comment    VARCHAR(256) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';
+
+CREATE TABLE likes
+(
+    like_id    BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT     NOT NULL,
+    post_id    BIGINT     NOT NULL,
+    activation TINYINT(1) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = 'utf8mb4'
+  DEFAULT COLLATE = 'utf8mb4_general_ci';

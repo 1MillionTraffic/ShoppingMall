@@ -1,6 +1,6 @@
 package com.example.mongodb.repository;
 
-import com.example.mongodb.entity.CartMapper;
+import com.example.mongodb.document.CartMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
