@@ -1,4 +1,5 @@
-package com.example.mysql.entity.product;
+package com.example.mysql.entity.photo;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,24 +17,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Table(name = "`like`")
+@Table(name = "photos")
 @Entity
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LikeEntity {
+public class PhotoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long likeId;
+    private Long photoId;
 
     @Column(nullable = false)
     private Long userId;
+
     @Column(nullable = false)
-    private Long productId;
+    private String encodedName;
     @Column(nullable = false)
-    private boolean activation;
+    private String originalName;
+    @Column(nullable = false)
+    private String path;
+    @Column(nullable = false)
+    private String fileExtension;
 
     @CreationTimestamp
     private Instant createdDt;

@@ -1,4 +1,4 @@
-package com.example.mysql.domain.product;
+package com.example.mysql.domain.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.mysql.domain.product;
+package com.example.mysql.domain.review;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review {
-    private Long reviewId;
+public class Like {
+    private Long likeId;
 }

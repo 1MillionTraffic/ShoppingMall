@@ -46,6 +46,36 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
+  review-mysql:
+    container_name: "review-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
+    image: mysql:8.0
+    ports:
+      - "13308:3306"
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: reviewDB
+    volumes:
+      - ./docker-sql/review/:/docker-entrypoint-initdb.d/
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  photo-mysql:
+    container_name: "photo-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
+    image: mysql:8.0
+    ports:
+      - "13309:3306"
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: photoDB
+    volumes:
+      - ./docker-sql/photo/:/docker-entrypoint-initdb.d/
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
   mongo-cart-db:
     image: mongo:5.0.16
     container_name: mongo-cart-db

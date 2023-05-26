@@ -1,8 +1,8 @@
-package com.example.mysql.mapper.product;
+package com.example.mysql.mapper.review;
 
 
-import com.example.mysql.domain.product.Review;
-import com.example.mysql.entity.product.ReviewEntity;
+import com.example.mysql.domain.review.Review;
+import com.example.mysql.entity.review.ReviewEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,5 +13,5 @@ public interface ReviewMapper {
 
     Review toDomain(ReviewEntity reviewEntity);
 
-    ReviewEntity toEntity(Review review);
+    ReviewEntity toEntity(Review product);
 }

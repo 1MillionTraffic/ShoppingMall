@@ -14,6 +14,16 @@ spring:
       url: jdbc:mysql://product-mysql:3306/productDB
       username: root
       password: 1234
+    review:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://review-mysql:3306/reviewDB
+      username: root
+      password: 1234
+    photo:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://photo-mysql:3306/photoDB
+      username: root
+      password: 1234
 
 ---
 spring:
@@ -24,12 +34,22 @@ spring:
   datasource:
     user:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13307/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      url: jdbc:mysql://localhost:13307/userDB
       username: root
       password: 1234
     product:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      url: jdbc:mysql://localhost:13306/productDB
+      username: root
+      password: 1234
+    review:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13308/reviewDB
+      username: root
+      password: 1234
+    photo:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13309/photoDB
       username: root
       password: 1234
 
@@ -42,11 +62,21 @@ spring:
   datasource:
     user:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13307/userDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      url: jdbc:mysql://localhost:13307/userDB
       username: root
       password: 1234
     product:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
+      url: jdbc:mysql://localhost:13306/productDB
+      username: root
+      password: 1234
+    review:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13308/reviewDB
+      username: root
+      password: 1234
+    photo:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13309/photoDB
       username: root
       password: 1234

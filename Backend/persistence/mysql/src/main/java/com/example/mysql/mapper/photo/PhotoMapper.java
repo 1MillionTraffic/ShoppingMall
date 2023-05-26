@@ -1,8 +1,8 @@
-package com.example.mysql.mapper.product;
+package com.example.mysql.mapper.photo;
 
 
-import com.example.mysql.domain.product.Photo;
-import com.example.mysql.entity.product.PhotoEntity;
+import com.example.mysql.domain.photo.Photo;
+import com.example.mysql.entity.photo.PhotoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

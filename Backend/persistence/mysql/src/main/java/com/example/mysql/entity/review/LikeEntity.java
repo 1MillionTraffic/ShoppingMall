@@ -1,4 +1,4 @@
-package com.example.mysql.entity.product;
+package com.example.mysql.entity.review;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,28 +16,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Table(name = "review")
+@Table(name = "likes")
 @Entity
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReviewEntity {
+public class LikeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Long likeId;
 
     @Column(nullable = false)
     private Long userId;
     @Column(nullable = false)
-    private Long productId;
-    private Long photoId;
-
+    private Long postId;
     @Column(nullable = false)
-    private Integer rate;
-    @Column(nullable = false)
-    private String comment;
+    private boolean activation;
 
     @CreationTimestamp
     private Instant createdDt;
