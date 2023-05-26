@@ -58,7 +58,7 @@ public class BillingDBConfig {
             @Qualifier("billingDataSource") DataSource billingDataSource) {
         return builder
                 .dataSource(billingDataSource)
-                .packages("com.example.entity.billing")
+                .packages("com.example.mysql.entity.billing")
                 .persistenceUnit("billing")
                 .properties(jpaProperties())
                 .build();
