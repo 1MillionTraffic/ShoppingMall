@@ -14,7 +14,12 @@ spring:
       url: jdbc:mysql://localhost:13306/productDB # url: jdbc:mysql://product-mysql:3306/productDB
       username: root
       password: 1234
-
+    auth:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:13307/authDB  #  url: jdbc:mysql://user-mysql:3306/userDB
+      username: root
+      password: 1234
+ß
   jpa:
     hibernate:
       ddl-auto: none
