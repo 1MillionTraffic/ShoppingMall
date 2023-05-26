@@ -41,6 +41,7 @@ public class ProductDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("product-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }

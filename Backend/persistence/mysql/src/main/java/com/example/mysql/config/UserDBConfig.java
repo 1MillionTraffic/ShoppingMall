@@ -41,6 +41,7 @@ public class UserDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("user-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }

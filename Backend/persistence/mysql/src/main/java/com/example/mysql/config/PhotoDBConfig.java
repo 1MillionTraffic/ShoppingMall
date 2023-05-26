@@ -41,6 +41,7 @@ public class PhotoDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("photo-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }

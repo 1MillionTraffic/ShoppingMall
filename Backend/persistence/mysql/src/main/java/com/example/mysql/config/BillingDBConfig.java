@@ -41,6 +41,7 @@ public class BillingDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("billing-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }

@@ -41,6 +41,7 @@ public class ReviewDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("review-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }
