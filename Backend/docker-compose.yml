@@ -1,20 +1,20 @@
 version: '3'
 services:
-  api-server:
-    container_name: api-server
-    restart: always
-    build:
-      context: ./
-      dockerfile: DockerfileApi
-    ports:
-      - "18081:8081"
-    environment:
-      - "SPRING_PROFILES_ACTIVE=docker"
-    depends_on:
-      - user-mysql
-      - product-mysql
-      - mongo-cart-db
-      - mongo-client-temp
+#  api-server:
+#    container_name: api-server
+#    restart: always
+#    build:
+#      context: ./
+#      dockerfile: DockerfileApi
+#    ports:
+#      - "18081:8081"
+#    environment:
+#      - "SPRING_PROFILES_ACTIVE=docker"
+#    depends_on:
+#      - user-mysql
+#      - product-mysql
+#      - mongo-cart-db
+#      - mongo-client-temp
 
   user-mysql:
     container_name: "user-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
@@ -87,6 +87,21 @@ services:
       MYSQL_DATABASE: billingDB
     volumes:
       - ./docker-sql/billing/:/docker-entrypoint-initdb.d/
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  auth-mysql:
+    container_name: "auth-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
+    image: mysql:8.0
+    ports:
+      - "13311:3306"
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: authDB
+    volumes:
+      - ./docker-sql/auth/:/docker-entrypoint-initdb.d/
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
