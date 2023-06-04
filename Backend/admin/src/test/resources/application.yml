@@ -34,6 +34,6 @@ logging:
     org.hibernate.type: trace
 
 file:
-  upload-dir: files/uploads
+  upload-dir: src/test/resources/uploads
   base-url: http://localhost:8083
   salt: e9f21367142f670bd58b1292da23bc45

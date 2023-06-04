@@ -1,7 +1,6 @@
 CREATE TABLE photos
 (
     photo_id       BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id        BIGINT       NOT NULL,
     encoded_name   VARCHAR(256) NOT NULL,
     original_name  VARCHAR(256) NOT NULL,
     path           VARCHAR(256) NOT NULL,
