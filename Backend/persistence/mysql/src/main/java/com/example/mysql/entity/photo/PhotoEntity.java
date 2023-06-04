@@ -1,20 +1,11 @@
 package com.example.mysql.entity.photo;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 
 @Table(name = "photos")
@@ -28,9 +19,6 @@ public class PhotoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long photoId;
-
-    @Column(nullable = false)
-    private Long userId;
 
     @Column(nullable = false)
     private String encodedName;
