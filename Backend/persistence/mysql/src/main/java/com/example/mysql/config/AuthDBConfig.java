@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.mysql.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
@@ -25,7 +25,7 @@ import java.util.Objects;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "authEntityManagerFactory",
         transactionManagerRef = "authTransactionManager",
-        basePackages = {"com.example.repository.auth"}
+        basePackages = {"com.example.mysql.repository.auth"}
 )
 public class AuthDBConfig {
     @Bean("authDataSource")
@@ -41,6 +41,7 @@ public class AuthDBConfig {
                 .password(password)
                 .build();
 
+        dataSource.setPoolName("auth-pool");
         dataSource.setConnectionInitSql("SET NAMES utf8mb4");
         return dataSource;
     }
@@ -59,8 +60,8 @@ public class AuthDBConfig {
             @Qualifier("authDataSource") DataSource authDataSource) {
         return builder
                 .dataSource(authDataSource)
-                .packages("com.example.entity.auth")
-                .persistenceUnit("users")
+                .packages("com.example.mysql.entity.auth")
+                .persistenceUnit("auths")
                 .properties(jpaProperties())
                 .build();
     }

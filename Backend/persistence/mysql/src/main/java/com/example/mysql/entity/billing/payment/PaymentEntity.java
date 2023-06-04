@@ -1,6 +1,5 @@
-package com.example.entity.user;
+package com.example.mysql.entity.billing.payment;
 
-import com.example.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,27 +8,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Table(name="users")
+@Table(name="payments")
 @Getter
 @Entity
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class UserEntity{
+public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="payment_id")
+    private Long paymentId;
+
     @Column(name="user_id")
     private Long userId;
-
-    @Column
-    private String uid;
-
-    @Column
-    private String userName;
-
-    @Column
-    private String email;
-
+    @Column(name="shop_id")
+    private Long shopId;
+    @Column(name="money")
+    private Integer money;
 
     @Column(name="created_dt")
     private Instant createdDt;
@@ -45,15 +41,5 @@ public class UserEntity{
     @PreUpdate
     public void preUpdate(){
         this.updatedDt = Instant.now();
-    }
-
-
-    public static UserEntity of(User user){
-        return UserEntity.builder()
-                .userId(user.getUserId())
-                .uid(user.getUid())
-                .email(user.getEmail())
-                .userName(user.getUserName())
-                .build();
     }
 }

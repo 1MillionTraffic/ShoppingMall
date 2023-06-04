@@ -1,8 +1,7 @@
-package com.example.controller;
+package com.example.api.controller;
 
 
-import com.example.model.enums.OAuthProvider;
-import com.example.service.AuthService;
+import com.example.api.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,8 +12,6 @@ import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
-import java.net.URLEncoder;
-import java.util.Optional;
 
 @RequestMapping("/api/auth")
 @RestController
