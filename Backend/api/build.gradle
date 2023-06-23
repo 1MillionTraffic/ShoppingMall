@@ -17,6 +17,9 @@ dependencies {
     implementation project(':persistence:mongodb')
     implementation project(':persistence:mysql')
 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
