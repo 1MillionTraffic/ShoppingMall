@@ -136,6 +136,7 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - node.name=elastic-search
       - cluster.initial_master_nodes=elastic-search
       - ELASTIC_PASSWORD=changeme
@@ -246,6 +247,37 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    restart: always
+    ports:
+      - "10008:8080"
+      - "10005:50000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins_home/:/var/jenkins_home
+    user: root
+    command:
+      - sh
+      - -c
+      - |
+        command -v docker || { curl -fsSL https://get.docker.com/ | sh && apt-get update && apt-get install -y docker-compose; }
+        /usr/local/bin/jenkins.sh
+  jenkins-cli-runner:
+    image: openjdk:11-jdk
+    container_name: jenkins-cli-runner
+    links:
+      - jenkins:jenkins
+    command:
+      - sh
+      - -c
+      - |
+        while true; do wget http://jenkins:8080/jnlpJars/jenkins-cli.jar && break || sleep 1s; done
+        java -jar jenkins-cli.jar -s http://jenkins:8080/ -auth admin:$(cat /secrets/initialAdminPassword) install-plugin ant build-timeout email-ext github-branch-source gradle javax-mail-api ldap matrix-auth pam-auth workflow-aggregator pipeline-github-lib pipeline-stage-view ssh-slaves sshd timestamper ws-cleanup
+        java -jar jenkins-cli.jar -s http://jenkins:8080/ -auth admin:$(cat /secrets/initialAdminPassword) restart
+    volumes:
+      - ./jenkins_home/secrets:/secrets
 
 volumes:
   mongo-cart-volume:
