@@ -10,6 +10,7 @@ import lombok.*;
 public class Auth {
     private Long id;
     private String uid;
+    private String userName;
     private String email;
     private String provider;
 

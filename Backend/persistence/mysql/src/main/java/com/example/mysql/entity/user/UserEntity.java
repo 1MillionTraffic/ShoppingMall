@@ -1,5 +1,7 @@
 package com.example.mysql.entity.user;
 
+import com.example.mysql.enums.UserGrade;
+import com.example.mysql.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,6 +30,14 @@ public class UserEntity {
 
     @Column
     private String email;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserGrade userGrade;
 
 
     @Column(name="created_dt")

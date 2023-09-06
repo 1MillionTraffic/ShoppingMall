@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: shopping-mall-consumer
+  profiles:
+    include: mysql, kafka
+    group:
+      "docker": "mysql_docker, kafka_docker"
+      "dev": "mysql_dev, kafka_dev"
+      "prod": "mysql_prod, kafka_prod"
+    active: dev
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+  main:
+    allow-circular-references: true # self injection(aop proxy)을 위해 사용
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: NON_NULL
+
+
+
+server:
+  port: 8084
+  shutdown: graceful
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace

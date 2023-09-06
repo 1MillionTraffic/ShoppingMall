@@ -5,6 +5,9 @@ import com.example.mysql.mapper.billing.order.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 @RequiredArgsConstructor
 public class OrderReaderImpl implements OrderReader {
@@ -14,5 +17,12 @@ public class OrderReaderImpl implements OrderReader {
     @Override
     public Order findByOrderId(Long orderId) {
         return orderMapper.toDomain(orderEntityRepository.findById(orderId).orElseThrow(IllegalArgumentException::new));
+    }
+
+    @Override
+    public List<Order> findByUserId(Long userId) {
+        return orderEntityRepository.findByUserId(userId).stream()
+                .map(orderMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }

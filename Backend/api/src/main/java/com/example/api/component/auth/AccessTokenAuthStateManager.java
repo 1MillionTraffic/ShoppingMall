@@ -61,7 +61,7 @@ public class AccessTokenAuthStateManager implements AuthStateManager{
 
     private String getPayload(HttpServletRequest request){
         var cookies = request.getCookies();
-        return Arrays.stream(request.getCookies()).filter(x -> x.getName().equals(COOKIE_KEY))
+        return Arrays.stream(cookies).filter(x -> x.getName().equals(COOKIE_KEY))
                 .findAny()
                 .orElseThrow()
                 .getValue();
@@ -79,6 +79,6 @@ public class AccessTokenAuthStateManager implements AuthStateManager{
         String email = this.getEmail(request);
         Auth auth = authReader.findByEmail(email);
 
-        return new Authentication(auth.getUid(), auth.getEmail(), auth.getProvider());
+        return new Authentication(auth.getUid(), auth.getUserName(), auth.getEmail(), auth.getProvider());
     }
 }

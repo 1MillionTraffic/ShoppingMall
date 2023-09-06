@@ -58,7 +58,7 @@ public class OAuth2LoginProcessorImpl implements OAuthLoginProcessor {
 
         UserInfoRequestResponse userInfo = this.getUserInfo(oAuthConfig, tokenRequestResponse.getAccess_token());
 
-        return new Authentication(userInfo.getId(), userInfo.getEmail(), oAuthConfig.getProviderName());
+        return new Authentication(userInfo.getId(), userInfo.getUsername(), userInfo.getEmail(), oAuthConfig.getProviderName());
     }
 
     @Override

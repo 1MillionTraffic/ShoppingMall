@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -23,4 +25,6 @@ public class OrderService {
     public Order findByOrderId(Long orderId) {
         return orderReader.findByOrderId(orderId);
     }
+
+    public List<Order> findByUserId(Long userId) {return orderReader.findByUserId(userId);}
 }

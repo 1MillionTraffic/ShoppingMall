@@ -19,4 +19,10 @@ public class UserReaderImpl implements UserReader {
         UserEntity user  = userEntityRepository.findByUid(uid).orElse(null);
         return userMapper.toDomain(user);
     }
+
+    @Override
+    public User findById(Long id){
+        UserEntity user = userEntityRepository.findByUserId(id).orElse(null);
+        return userMapper.toDomain(user);
+    }
 }

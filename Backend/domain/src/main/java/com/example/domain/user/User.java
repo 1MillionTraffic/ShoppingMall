@@ -1,5 +1,7 @@
 package com.example.domain.user;
 
+import com.example.domain.enums.UserGrade;
+import com.example.domain.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,5 +16,7 @@ public class User {
     private String uid;
     private String userName;
     private String email;
+    private UserType userType;
+    private UserGrade userGrade;
 
 }

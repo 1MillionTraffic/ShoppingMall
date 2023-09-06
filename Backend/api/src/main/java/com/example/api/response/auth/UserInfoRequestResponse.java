@@ -19,6 +19,7 @@ public class UserInfoRequestResponse implements Serializable {
 
     public String getId(){return response.getId();}
     public String getEmail(){return response.getEmail();}
+    public String getUsername(){return response.getNickname();}
 
     @Getter
     @Setter
@@ -26,7 +27,7 @@ public class UserInfoRequestResponse implements Serializable {
     @AllArgsConstructor
     private class Response{
         private String id;
-        private String nickName;
+        private String nickname;
         private String email;
     }
 }

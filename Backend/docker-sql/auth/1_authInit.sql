@@ -1,6 +1,7 @@
 CREATE TABLE `auths` (
     `id`    bigint NOT NULL AUTO_INCREMENT,
     `uid`   varchar(100),
+    `user_name` varchar(255) NOT NULL,
     `email` varchar(100),
     `provider` varchar(50),
     `encrypted_password` varchar(200),

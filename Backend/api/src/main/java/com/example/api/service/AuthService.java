@@ -2,6 +2,8 @@ package com.example.api.service;
 
 import com.example.api.config.oauth.OAuthConfig;
 import com.example.domain.auth.Auth;
+import com.example.domain.enums.UserGrade;
+import com.example.domain.enums.UserType;
 import com.example.domain.user.User;
 import com.example.api.model.auth.Authentication;
 import com.example.mysql.repository.auth.reader.AuthReader;
@@ -45,7 +47,7 @@ public class AuthService {
     }
 
     //@Transactional(value = "{authTransactionManager, userTransactionManager}")
-    public void processOAuthLogin(HttpServletRequest request, HttpServletResponse response, String providerName, String code) throws AuthenticationException {
+    public User processOAuthLogin(HttpServletRequest request, HttpServletResponse response, String providerName, String code) throws AuthenticationException {
         OAuthProvider provider = Optional.ofNullable(OAuthProvider.getOAuthProvider(providerName)).orElseThrow();
         OAuthConfig oAuthConfig = oAuthConfigManager.getOAuthConfig(provider);
 
@@ -54,16 +56,31 @@ public class AuthService {
         Auth auth = authReader.findByUid(authentication.getId());
 
         if(auth == null){
-
+            auth = Auth.builder()
+                    .uid(authentication.getId())
+                    .userName(authentication.getUsername())
+                    .email(authentication.getEmail())
+                    .provider(authentication.getProvider())
+                    .build();
+            authWriter.save(auth);
         }
 
         User user = userReader.findByUid(authentication.getId());
 
         if(user ==  null){
-
+            user = User.builder()
+                    .uid(auth.getUid())
+                    .userName(authentication.getUsername())
+                    .email(auth.getEmail())
+                    .userType(UserType.NORMAL)
+                    .userGrade(UserGrade.LEVEL1)
+                    .build();
+            userWriter.save(user);
         }
 
         oAuthLoginProcessor.saveState(request, response, authentication);
+
+        return user;
     }
 
 

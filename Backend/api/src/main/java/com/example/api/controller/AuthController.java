@@ -1,7 +1,9 @@
 package com.example.api.controller;
 
 
+import com.example.api.response.auth.LoginResponse;
 import com.example.api.service.AuthService;
+import com.example.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,8 +38,16 @@ public class AuthController {
             HttpServletRequest request,
             HttpServletResponse response) throws AuthenticationException {
 
-        authService.processOAuthLogin(request, response, provider, code);
+        User user = authService.processOAuthLogin(request, response, provider, code);
 
-        return null;
+        return new ResponseEntity<>(
+                LoginResponse.builder()
+                        .login(true)
+                        .username(user.getUserName())
+                        .userGrade(user.getUserGrade().toString())
+                        .userType(user.getUserType().toString())
+                        .build(),
+                HttpStatus.OK
+        );
     }
 }

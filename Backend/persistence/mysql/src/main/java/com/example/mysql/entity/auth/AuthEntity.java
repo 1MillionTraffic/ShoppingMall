@@ -25,6 +25,8 @@ public class AuthEntity {
     private Long id;
     @Column(unique = true, nullable = false)
     private String uid;
+    @Column(nullable = false)
+    private String userName;
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
