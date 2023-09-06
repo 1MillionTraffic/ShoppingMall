@@ -6,4 +6,8 @@ include 'domain'
 include 'persistence:mongodb'
 include 'persistence:mysql'
 include 'persistence:elastic-search'
+include 'persistence:kafka'
+findProject(':persistence:kafka')?.name = 'kafka'
+include 'consumer'
+include 'consumer'
 

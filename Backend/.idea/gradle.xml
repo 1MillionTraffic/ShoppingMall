@@ -13,9 +13,11 @@
             <option value="$PROJECT_DIR$/admin" />
             <option value="$PROJECT_DIR$/api" />
             <option value="$PROJECT_DIR$/batch" />
+            <option value="$PROJECT_DIR$/consumer" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/persistence" />
             <option value="$PROJECT_DIR$/persistence/elastic-search" />
+            <option value="$PROJECT_DIR$/persistence/kafka" />
             <option value="$PROJECT_DIR$/persistence/mongodb" />
             <option value="$PROJECT_DIR$/persistence/mysql" />
           </set>

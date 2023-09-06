@@ -1,20 +1,20 @@
 version: '3'
 services:
-  api-server:
-    container_name: api-server
-    restart: always
-    build:
-      context: ./
-      dockerfile: DockerfileApi
-    ports:
-      - "18081:8081"
-    environment:
-      - "SPRING_PROFILES_ACTIVE=docker"
-    depends_on:
-      - user-mysql
-      - product-mysql
-      - mongo-cart-db
-      - mongo-client-temp
+#  api-server:
+#    container_name: api-server
+#    restart: always
+#    build:
+#      context: ./
+#      dockerfile: DockerfileApi
+#    ports:
+#      - "18081:8081"
+#    environment:
+#      - "SPRING_PROFILES_ACTIVE=docker"
+#    depends_on:
+#      - user-mysql
+#      - product-mysql
+#      - mongo-cart-db
+#      - mongo-client-temp
 
   user-mysql:
     container_name: "user-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
@@ -91,6 +91,21 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
+  auth-mysql:
+    container_name: "auth-mysql" # spring 설정에 database-url을 해당 container 이름으로 해야한다
+    image: mysql:8.0
+    ports:
+      - "13311:3306"
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: authDB
+    volumes:
+      - ./docker-sql/auth/:/docker-entrypoint-initdb.d/
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
   elastic-search:
     container_name: "elastic-search"
     image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
@@ -126,6 +141,22 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+       - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   mongo-cart-volume:

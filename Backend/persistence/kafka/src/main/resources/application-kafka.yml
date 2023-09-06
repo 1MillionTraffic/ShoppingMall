@@ -1,0 +1,27 @@
+spring:
+  config:
+    activate:
+      on-profile: kafka_docker
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: kafka_dev
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: kafka_prod
+
+  kafka:
+    bootstrap-servers: localhost:9092

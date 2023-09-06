@@ -1,9 +1,13 @@
 package com.example.api.service;
 
 import com.example.api.request.product.CreateProductRequest;
+import com.example.api.response.product.PurchaseResponse;
+import com.example.domain.product.Option;
 import com.example.domain.product.Product;
 import com.example.elastic.repository.product.ProductElasticSearchReader;
 import com.example.elastic.repository.product.ProductElasticSearchWriter;
+import com.example.kafka.enums.Channel;
+import com.example.kafka.publisher.Publisher;
 import com.example.mysql.repository.product.reader.ProductReader;
 import com.example.mysql.repository.product.writer.ProductWriter;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +25,11 @@ public class ProductService {
     private final ProductReader productReader;
     private final ProductElasticSearchReader productElasticSearchReader;
     private final ProductElasticSearchWriter productElasticSearchWriter;
+    private final Publisher publisher;
+
+    public boolean checkPurchase(Product product, Option option, int quantity){
+        return true;
+    }
 
     @Transactional(value = "productTransactionManager")
     public Product createProduct(CreateProductRequest request) {
@@ -41,5 +50,24 @@ public class ProductService {
 
     public List<Product> findQuery(String query) {
         return productElasticSearchReader.search(query);
+    }
+
+    public PurchaseResponse purchase(Long productId, Long OptionId, int quantity){
+        var product = productReader.findByProductId(productId);
+
+        if(!checkPurchase(product, null, quantity)){
+            return PurchaseResponse.builder()
+                    .productId(productId)
+                    .Success(false)
+                    .build();
+        }
+
+        publisher.publish(Channel.CREATE_ORDER, product);
+
+        return PurchaseResponse.builder()
+                .productId(productId)
+                .Success(true)
+                .build();
+
     }
 }

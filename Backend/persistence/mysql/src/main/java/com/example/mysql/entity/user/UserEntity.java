@@ -1,5 +1,7 @@
 package com.example.mysql.entity.user;
 
+import com.example.mysql.enums.UserGrade;
+import com.example.mysql.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,26 +19,40 @@ import java.time.Instant;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name="user_id")
     private Long userId;
+
+    @Column
+    private String uid;
 
     @Column
     private String userName;
 
+    @Column
+    private String email;
 
-    @Column(name = "created_dt")
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserGrade userGrade;
+
+
+    @Column(name="created_dt")
     private Instant createdDt;
-    @Column(name = "updated_dt")
+    @Column(name="updated_dt")
     private Instant updatedDt;
 
     @PrePersist
-    public void prePersist() {
+    public void prePersist(){
         this.createdDt = Instant.now();
         this.updatedDt = Instant.now();
     }
 
     @PreUpdate
-    public void preUpdate() {
+    public void preUpdate(){
         this.updatedDt = Instant.now();
     }
 }
