@@ -1,25 +1,7 @@
-plugins {
-    id 'java'
-}
-
-group = 'org.example.admin'
-version = '1.0-SNAPSHOT'
-
-bootJar { enabled = true }
-jar { enabled = false }
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':persistence:mongodb')
     implementation project(':persistence:mysql')
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
 }
