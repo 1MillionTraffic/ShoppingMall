@@ -19,6 +19,8 @@ subprojects {
     apply plugin: "org.jetbrains.kotlin.plugin.spring"
     apply plugin: "org.jetbrains.kotlin.plugin.jpa"
 
+    sourceCompatibility = '11'
+
     group = 'org.example'
     version = '0.1.0-SNAPSHOT'
 
